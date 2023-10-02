@@ -39,24 +39,38 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/goole"
+            android:id="@+id/btnGoole"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="@string/google">
 
         </Button>
         <Button
-            android:id="@+id/llama"
+            android:id="@+id/btnLlama"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="@string/llamar">
 
         </Button>
         <Button
-            android:id="@+id/alarm"
+            android:id="@+id/btnAlarm"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="@string/crear_alarma">
+
+        </Button>
+        <Button
+            android:id="@+id/btnCamara"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/camara">
+
+        </Button>
+        <Button
+            android:id="@+id/btnYoutube"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/ytb">
 
         </Button>
 
