@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         llama = findViewById(R.id.btnLlama);
         alar = findViewById(R.id.btnAlarm);
         cam = findViewById(R.id.btnCamara);
-        ytb = findViewById(R.id.btnYoutube);
+        ytb = findViewById(R.id.btnEmail);
 
         goo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,9 +43,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent llamar = new Intent(Intent.ACTION_CALL, Uri.parse("3004988487"));
-                if(ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE)!=
-                        PackageManager.PERMISSION_GRANTED)
-                    return;
                     startActivity(llamar);
                 }
 
@@ -67,9 +64,9 @@ public class MainActivity extends AppCompatActivity {
         cam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent abrirCamara= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (abrirCamara.resolveActivity(getPackageManager()) != null){
-                    startActivity(abrirCamara);
+                Intent enviarCorreo= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (enviarCorreo.resolveActivity(getPackageManager()) != null){
+                    startActivity(enviarCorreo);
                 }
 
 
@@ -79,9 +76,16 @@ public class MainActivity extends AppCompatActivity {
         ytb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent irYoutube = new Intent(Intent.ACTION_VIEW);
-                irYoutube.setData(Uri.parse("http://www.youtube.com"));
-                startActivity(irYoutube);
+                Intent Correo= new
+                Intent(Intent.ACTION_SENDTO);
+                Correo.setData(Uri.parse("malito"));
+                Correo.putExtra(Intent.EXTRA_EMAIL, new String[]{"brahyan.ray9@gmail.com"});
+                Correo.putExtra(Intent.EXTRA_SUBJECT, "USANDO LA APPA");
+                Correo.putExtra(Intent.EXTRA_TEXT, "Hola enviando comprobacion de la appa");
+
+                if(Correo.resolveActivity(getPackageManager())!= null){
+                    startActivity(Correo);
+                }
 
             }
         });

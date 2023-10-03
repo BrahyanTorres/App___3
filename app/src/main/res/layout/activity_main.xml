@@ -67,7 +67,7 @@
 
         </Button>
         <Button
-            android:id="@+id/btnYoutube"
+            android:id="@+id/btnEmail"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="@string/ytb">
