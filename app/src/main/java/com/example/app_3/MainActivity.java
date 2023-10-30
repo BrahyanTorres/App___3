@@ -15,7 +15,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
 
-    Button goo, llama, alar, cam, ytb;
+    Button goo, llama, alar, cam, email;
 
 
     @Override
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         llama = findViewById(R.id.btnLlama);
         alar = findViewById(R.id.btnAlarm);
         cam = findViewById(R.id.btnCamara);
-        ytb = findViewById(R.id.btnEmail);
+        email = findViewById(R.id.btnEmail);
 
         goo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
                 irGooogle.setData(Uri.parse("http://www.google.com"));
                 startActivity(irGooogle);
 
-
             }
         });
         llama.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent llamar = new Intent(Intent.ACTION_CALL, Uri.parse("3004988487"));
-                    startActivity(llamar);
+                Intent Llamar = new Intent(Intent.ACTION_DIAL);
+                Llamar.setData(Uri.parse("tel:3004988487"));
+                    startActivity(Llamar);
                 }
 
 
@@ -64,27 +64,28 @@ public class MainActivity extends AppCompatActivity {
         cam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent enviarCorreo= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (enviarCorreo.resolveActivity(getPackageManager()) != null){
-                    startActivity(enviarCorreo);
+                Intent camara = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (camara.resolveActivity(getPackageManager()) != null) {
+                    startActivity(camara);
                 }
 
 
             }
         });
 
-        ytb.setOnClickListener(new View.OnClickListener() {
+        email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent Correo= new
-                Intent(Intent.ACTION_SENDTO);
-                Correo.setData(Uri.parse("malito"));
+                Intent(Intent.ACTION_SEND);
+                Correo.setData(Uri.parse("mailto"));
+                Correo.setType("text/plain");
                 Correo.putExtra(Intent.EXTRA_EMAIL, new String[]{"brahyan.ray9@gmail.com"});
-                Correo.putExtra(Intent.EXTRA_SUBJECT, "USANDO LA APPA");
+                Correo.putExtra(Intent.EXTRA_SUBJECT, "USANDO LA APP");
                 Correo.putExtra(Intent.EXTRA_TEXT, "Hola enviando comprobacion de la appa");
 
                 if(Correo.resolveActivity(getPackageManager())!= null){
-                    startActivity(Correo);
+                    startActivity(Intent.createChooser(Correo,"title:Send Email"));
                 }
 
             }
